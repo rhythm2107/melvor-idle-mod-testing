@@ -1,3 +1,23 @@
-export function setup() {
-    console.log('Hello From My Mod!');
+export function setup(ctx) {
+    ctx.settings.section('General').add(
+    {
+      type: 'number',
+      name: 'xp-multiplier',
+      label: 'XP Multiplier',
+      hint: 'Multiply all XP gains by this amount',
+      default: 1
+    },
+    {
+        type: 'text',
+        name: 'Babuś',
+        label: 'Babuś to jest zwierze, babuś babuś babuś',
+        hint: 'Babuś babuś babuś',
+        default: 'Babuśiusususuś'
+    }
+);
+  
+    ctx.patch(Skill, 'addXP').before(function(amount, masteryAction) {
+      const xpMultiplier = ctx.settings.section('General').get('xp-multiplier');
+      return [amount * xpMultiplier, masteryAction];
+    });
   }
