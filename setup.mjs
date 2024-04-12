@@ -9,7 +9,7 @@ export function setup(ctx) {
     },
     {
         type: 'text',
-        name: 'Babuś',
+        name: 'BabuśTEST',
         label: 'Babuś babus babus',
         hint: 'Babuuuuś babus buus bus bus to jest zwierze',
         default: 'Babuś'
